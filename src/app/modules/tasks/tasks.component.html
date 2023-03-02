@@ -1,6 +1,8 @@
 <h1 class="title">Task management</h1>
 
 <div class="search-input-wrapper">
+    <button (click)="createANewTask()">Add new Task</button>
+    
     <form class="example-form">
         <mat-form-field class="example-full-width">
             <mat-label>Search task by id</mat-label>
@@ -18,7 +20,7 @@
                 [cdkDropListConnectedTo]="[inprocessList, doneList]" class="task-list"
                 (cdkDropListDropped)="drop($event)">
                 <ng-container *ngIf="!!todo">
-                    <app-task *ngFor="let task of todo" [task]="task"></app-task>
+                    <app-task *ngFor="let task of todo; trackBy: trackByID" [task]="task"></app-task>
                 </ng-container>
             </div>
         </div>
@@ -30,7 +32,7 @@
                 [cdkDropListConnectedTo]="[todoList, inprocessList]" class="task-list"
                 (cdkDropListDropped)="drop($event)">
                 <ng-container *ngIf="!!inprocess">
-                    <app-task *ngFor="let task of inprocess" [task]="task"></app-task>
+                    <app-task *ngFor="let task of inprocess; trackBy: trackByID" [task]="task"></app-task>
                 </ng-container>
             </div>
         </div>
@@ -41,7 +43,7 @@
             <div cdkDropList #inprocessList="cdkDropList" [cdkDropListData]="done"
                 [cdkDropListConnectedTo]="[doneList, todoList]" class="task-list" (cdkDropListDropped)="drop($event)">
                 <ng-container *ngIf="!!done">
-                    <app-task class="done-status" *ngFor="let task of done" [task]="task"></app-task>
+                    <app-task class="done-status" *ngFor="let task of done; trackBy: trackByID" [task]="task"></app-task>
                 </ng-container>
             </div>
         </div>

@@ -44,7 +44,7 @@ export class BackendService {
         { id: 222, name: "James" }
     ];
 
-    lastId = 1;
+    lastId = 100;
 
     constructor() {
         this.setItemTaskList(this.storedTasks);
@@ -89,7 +89,8 @@ export class BackendService {
         const newTask: Task = {
             id: ++this.lastId,
             description: payload.description,
-            status: TASK_STATUS.PENDING
+            status: TASK_STATUS.TODO,
+            assigneeId: null
         };
 
         this.storedTasks = this.storedTasks.concat(newTask);
