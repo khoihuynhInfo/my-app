@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.title {
+    text-align: center;
+}
+
+.wrapper {
+    border: 2px dashed silver;
+    border-radius: 12px;
+    padding: 2rem;
+    height: 100%;
+    margin: 10px;
+}

@@ -1,0 +1,8 @@
+<div class="task-box" cdkDrag [routerLink]="[ task?.id ]">
+    <span>
+        {{ task?.description }}
+    </span>
+    <span class="assign-status" *ngIf="!task?.assigneeId">
+        need assign to someone
+    </span>
+</div>

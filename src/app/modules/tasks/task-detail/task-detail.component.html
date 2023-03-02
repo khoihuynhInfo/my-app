@@ -1,0 +1,50 @@
+<div class="header">
+    <div class="home-button-container">
+        <button matTooltip="delete task" mat-mini-fab color="warn"
+            aria-label="Example icon button with a filter list icon" (click)="goBack()">
+            <mat-icon>home</mat-icon>
+        </button>
+    </div>
+    <h1 class="title">Task Details</h1>
+</div>
+
+<div class="wrapper">
+    <div *ngIf="!!task" class="action-groups">
+        <button matTooltip="Remove Task" mat-mini-fab color="warn"
+            aria-label="Example icon button with a filter list icon" (click)="removeTask( task )">
+            <mat-icon>remove</mat-icon>
+        </button>
+    </div>
+
+    <mat-list role="list">
+        <ng-container *ngIf="!!task">
+            <mat-list-item role="listitem">Task ID: {{ task?.id }}</mat-list-item>
+
+            <mat-divider></mat-divider>
+
+            <mat-list-item role="listitem">Status: {{ task?.status }}</mat-list-item>
+
+            <mat-divider></mat-divider>
+
+            <mat-list-item role="listitem">Descripton: {{ task?.description }}</mat-list-item>
+        </ng-container>
+
+        <mat-divider></mat-divider>
+        <ng-container *ngIf="!!(user$ | async); else assignUserTemplate">
+            <mat-list-item role="listitem">Assign To: {{ ( user$ | async )?.name }}</mat-list-item>
+        </ng-container>
+
+        <ng-template #assignUserTemplate>
+            <mat-list-item>
+                <mat-label>Assign task to user: </mat-label>
+                <select class="user-select" [(ngModel)]="selectedUser" (ngModelChange)="changeUser()" name="user"
+                    *ngIf="!!( userList$ | async )">
+                    <option *ngFor="let user of ( userList$ | async )" [value]="user.id">
+                        {{user.name}}
+                    </option>
+                </select>
+            </mat-list-item>
+
+        </ng-template>
+    </mat-list>
+</div>

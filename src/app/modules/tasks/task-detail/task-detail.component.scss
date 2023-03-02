@@ -1,0 +1,24 @@
+.mat-list-base .mat-list-item {
+    color: black;
+}
+
+.home-button-container {
+    display: flex;
+    justify-content: center;
+    width: 120px;
+    margin-top: 1rem;
+}
+
+.mat-divider {
+    border-top-color: silver;
+}
+
+.user-select {
+    padding: 5px 10px;
+    margin-left: 18px;
+}
+
+.action-groups {
+    display: flex;
+    flex-direction: row-reverse;
+}

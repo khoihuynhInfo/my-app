@@ -1,0 +1,53 @@
+<h1 class="title">Task management</h1>
+
+<div class="search-input-wrapper">
+    <form class="example-form">
+        <mat-form-field class="example-full-width">
+            <mat-label>Search task by id</mat-label>
+            <input [formControl]="searchTaskFormControl" class="search-input" matInput placeholder="Search task by id">
+        </mat-form-field>
+    </form>
+</div>
+
+<ng-container *ngIf="!isLoading; else loadingTemplate">
+    <div class="wrapper">
+        <div class="task-container">
+            <h2 class="todo-title">To do</h2>
+
+            <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
+                [cdkDropListConnectedTo]="[inprocessList, doneList]" class="task-list"
+                (cdkDropListDropped)="drop($event)">
+                <ng-container *ngIf="!!todo">
+                    <app-task *ngFor="let task of todo" [task]="task"></app-task>
+                </ng-container>
+            </div>
+        </div>
+
+        <div class="task-container">
+            <h2 class="finish-title">Inprocess</h2>
+
+            <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="inprocess"
+                [cdkDropListConnectedTo]="[todoList, inprocessList]" class="task-list"
+                (cdkDropListDropped)="drop($event)">
+                <ng-container *ngIf="!!inprocess">
+                    <app-task *ngFor="let task of inprocess" [task]="task"></app-task>
+                </ng-container>
+            </div>
+        </div>
+
+        <div class="task-container">
+            <h2 class="inprocess-title">Finish</h2>
+
+            <div cdkDropList #inprocessList="cdkDropList" [cdkDropListData]="done"
+                [cdkDropListConnectedTo]="[doneList, todoList]" class="task-list" (cdkDropListDropped)="drop($event)">
+                <ng-container *ngIf="!!done">
+                    <app-task class="done-status" *ngFor="let task of done" [task]="task"></app-task>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<ng-template #loadingTemplate>
+    <mat-spinner class="spinner"></mat-spinner>
+</ng-template>
