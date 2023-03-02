@@ -1,3 +1,6 @@
+![image](https://user-images.githubusercontent.com/42467520/222357404-38432d98-613b-4e69-b47e-cc0bbe74f7bc.png)
+
+
 # MyApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.4.
