@@ -9,7 +9,7 @@ export class TasksHelper {
     }
 
     static changeStatusTask(tasks: Task[], taskStatus: TASK_STATUS): Task[] {
-        return cloneDeep(tasks).map(task => {
+        return cloneDeep(tasks)?.map(task => {
             task.status = taskStatus;
             return task;
         });

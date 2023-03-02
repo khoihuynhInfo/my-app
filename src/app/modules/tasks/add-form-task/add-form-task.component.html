@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Add new Task</h1>
+<div mat-dialog-content>
+    <mat-form-field class="model-task-full-width">
+        <mat-label>Descripton</mat-label>
+        <textarea [formControl]="descriptionControl" matInput placeholder="descripton"></textarea>
+        <mat-error *ngIf="descriptionControl.hasError('required')">You must enter a value</mat-error>  
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="closeDialog()">Close</button>
+    <button mat-button (click)="submit()">Submit</button>
+</div>
